@@ -9,7 +9,7 @@ const loadExampleButton = document.getElementById("load-example");
 const clearStorageButton = document.getElementById("clear-storage");
 const result = document.getElementById("result");
 
-const STORAGE_KEY = "daely-participation-calculator:v2";
+const STORAGE_KEY = "dayle-participation-calculator:v2";
 
 const POLICY = {
   toleranceRate: 0.05,
