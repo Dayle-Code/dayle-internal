@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title }} | Dayle Internal</title>
+    <meta name="description" content="{{ page.description | default: site.description }}" />
+    <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}" />
+  </head>
+
+  <body>
+    <main class="page page-narrow">
+      <header class="topbar">
+        <a class="brand" href="{{ '/' | relative_url }}">Dayle Internal</a>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="{{ '/docs/' | relative_url }}">Docs</a>
+          <a href="{{ '/tools/' | relative_url }}">Tools</a>
+          <a href="{{ '/tools/participation-calculator/' | relative_url }}">Calculadora</a>
+        </nav>
+      </header>
+
+      <article class="doc-card markdown-body">
+        {{ content }}
+      </article>
+
+      <footer class="footer">
+        Dayle Code · Repositorio interno operativo
+      </footer>
+    </main>
+  </body>
+</html>

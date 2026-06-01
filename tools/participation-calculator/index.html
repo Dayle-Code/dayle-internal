@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculadora de participación · Daely Code</title>
+    <meta
+      name="description"
+      content="Calculadora de participación por proyecto para faltas, penalizaciones, piso mínimo, exclusiones y bolsa común."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="../../">Daely Code</a>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="../../">Inicio</a>
+          <a href="../">Herramientas</a>
+          <a href="../../docs/">Documentación</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">Herramienta interna</p>
+        <h1>Calculadora de participación por proyecto</h1>
+        <p>
+          Calcula tolerancia de faltas, penalizaciones progresivas, piso mínimo,
+          exclusiones, bolsa común y distribución final según la política interna.
+        </p>
+      </section>
+
+      <section class="panel info-panel" aria-labelledby="formula-title">
+        <div class="panel-header compact-header">
+          <div>
+            <h2 id="formula-title">Fórmula aplicada</h2>
+            <p>
+              Tolerancia: 5% de los días hábiles, redondeado hacia abajo. Luego: faltas 1 a 3 descuentan 1% cada una;
+              faltas 4 a 6 descuentan 2% cada una; faltas 7+ descuentan 3% cada una.
+            </p>
+          </div>
+        </div>
+        <div class="formula-grid">
+          <span>Base = 100 / integrantes</span>
+          <span>Piso mínimo = 5%</span>
+          <span>Participación mínima válida = 30%</span>
+          <span>Sin participación mínima = 0%</span>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="project-title">
+        <div class="panel-header panel-header-row">
+          <div>
+            <h2 id="project-title">Datos del proyecto</h2>
+            <p>Usá días hábiles estimados y puntos de falta por integrante.</p>
+          </div>
+          <div class="button-row">
+            <button id="load-example" class="secondary-button" type="button">Cargar ejemplo</button>
+            <button id="clear-storage" class="secondary-button danger-soft" type="button">Limpiar datos</button>
+          </div>
+        </div>
+
+        <form id="project-form" class="form-grid">
+          <label>
+            Nombre del proyecto
+            <input id="project-name" type="text" value="Proyecto interno" autocomplete="off" />
+          </label>
+
+          <label>
+            Integrantes activos
+            <input id="member-count" type="number" min="1" max="20" value="5" />
+          </label>
+
+          <label>
+            Días hábiles del proyecto
+            <input id="business-days" type="number" min="1" max="365" value="85" />
+          </label>
+
+          <label>
+            Tolerancia calculada
+            <input id="tolerance-preview" value="4 faltas" disabled />
+          </label>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="members-title">
+        <div class="panel-header panel-header-row">
+          <div>
+            <h2 id="members-title">Integrantes</h2>
+            <p>
+              “Puntos de falta” puede incluir ausencias, no contribuciones o faltas críticas.
+              La participación válida mide contribución/asistencia real.
+            </p>
+          </div>
+          <button id="reset-members" class="secondary-button" type="button">Resetear integrantes</button>
+        </div>
+
+        <div id="members-list" class="members-list"></div>
+      </section>
+
+      <section class="actions" aria-label="Acciones de cálculo">
+        <button id="calculate-button" class="primary-button" type="button">Calcular distribución</button>
+      </section>
+
+      <section id="result" class="panel result-panel" aria-live="polite"></section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
