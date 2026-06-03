@@ -16,6 +16,7 @@
   --success: #4ade80;
   --info: #60a5fa;
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", ui-monospace, monospace;
 }
 
 * {
@@ -27,16 +28,66 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
   margin: 0;
   min-height: 100vh;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 32rem),
-    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.04), transparent 28rem),
-    var(--bg);
+  background: linear-gradient(180deg, #08080a 0%, #0d0d10 52%, #08080a 100%);
   color: var(--text);
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::before {
+  content:
+    'pnpm build && pnpm preview\A'
+    'docker compose up -d postgres redis\A'
+    'const pr = await octokit.rest.pulls.create({ owner, repo, head, base });\A'
+    'export async function deployPreview(projectId: string) {\A'
+    '  const checklist = await loadChecklist(projectId);\A'
+    '  if (!checklist.approved) throw new Error("Missing approval");\A'
+    '  return publish({ branch: "main", environment: "preview" });\A'
+    '}\A'
+    'SELECT member_id, SUM(points) AS participation FROM project_activity GROUP BY member_id;\A'
+    'pytest -q && ruff check .';
+  top: -9vh;
+  left: -9vw;
+  width: 135vw;
+  height: 130vh;
+  color: rgba(255, 255, 255, 0.072);
+  font-family: var(--mono);
+  font-size: clamp(3.9rem, 8.7vw, 10.5rem);
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  line-height: 0.92;
+  white-space: pre;
+  transform: rotate(-7deg);
+  text-shadow: 0 0 34px rgba(255, 255, 255, 0.08);
+}
+
+body::after {
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255, 255, 255, 0.115), transparent 35rem),
+    radial-gradient(circle at 88% 22%, rgba(255, 255, 255, 0.075), transparent 32rem),
+    radial-gradient(circle at 54% 92%, rgba(255, 255, 255, 0.05), transparent 40rem),
+    radial-gradient(circle, rgba(255, 255, 255, 0.23) 0 1px, transparent 1.7px),
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: auto, auto, auto, 112px 112px, 48px 48px, 48px 48px;
+  opacity: 0.72;
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, black 74%, transparent 100%);
+  mask-image: radial-gradient(circle at center, black 0%, black 74%, transparent 100%);
 }
 
 body::selection {
@@ -49,6 +100,8 @@ a {
 }
 
 .page {
+  position: relative;
+  z-index: 1;
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
   padding: 44px 0;
@@ -106,10 +159,11 @@ a {
 
 .hero {
   padding: 42px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 30px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.022));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.115), rgba(255, 255, 255, 0.035));
   box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
 }
 
 .eyebrow {
@@ -212,9 +266,11 @@ h1 {
   flex-direction: column;
   min-height: 210px;
   padding: 24px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 26px;
-  background: rgba(255, 255, 255, 0.045);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035));
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(16px);
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
@@ -253,10 +309,11 @@ h1 {
 
 .doc-card {
   padding: 34px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
-  background: rgba(255, 255, 255, 0.045);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035));
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px);
 }
 
 .markdown-body {
@@ -376,5 +433,28 @@ h1 {
 
   .card {
     min-height: 170px;
+  }
+}
+
+
+@media (max-width: 860px) {
+  body::before {
+    top: -3vh;
+    left: -28vw;
+    width: 160vw;
+    height: 120vh;
+    font-size: clamp(3rem, 18vw, 6.4rem);
+    opacity: 0.62;
+  }
+
+  body::after {
+    opacity: 0.5;
+    background-size: auto, auto, auto, 140px 140px, 64px 64px, 64px 64px;
+  }
+
+  .hero,
+  .card,
+  .doc-card {
+    backdrop-filter: blur(10px);
   }
 }
