@@ -5,71 +5,71 @@ const PRESETS = [
     id: "landing",
     name: "Landing / campaña",
     description: "Página enfocada en conversión, contenido breve y deploy simple.",
-    scope: { pages: 5, screens: 0, entities: 0, roles: 0, integrations: 0, automations: 0 },
-    modules: ["discovery", "uxui", "copyContent", "frontendStatic", "seo", "deploy", "qa", "docs"],
+    scope: { pages: 4, screens: 0, entities: 0, roles: 0, integrations: 0, automations: 0 },
+    modules: ["discovery", "uxui", "copyContent", "frontendStatic", "seo", "deploy", "qa"],
   },
   {
     id: "institutional",
     name: "Sitio institucional",
     description: "Web de marca con varias secciones, contenido administrable manualmente y SEO base.",
-    scope: { pages: 8, screens: 0, entities: 0, roles: 0, integrations: 1, automations: 0 },
-    modules: ["discovery", "uxui", "copyContent", "frontendStatic", "forms", "seo", "analytics", "deploy", "qa", "docs"],
+    scope: { pages: 6, screens: 0, entities: 0, roles: 0, integrations: 1, automations: 0 },
+    modules: ["discovery", "uxui", "copyContent", "frontendStatic", "forms", "seo", "analyticsSetup", "deploy", "qa", "docs"],
   },
   {
     id: "catalogWhatsapp",
     name: "Catálogo / pedidos por WhatsApp",
     description: "Menú, carrito, checkout informativo y mensaje armado para WhatsApp.",
-    scope: { pages: 3, screens: 8, entities: 3, roles: 0, integrations: 1, automations: 1 },
-    modules: ["discovery", "uxui", "frontendApp", "catalog", "cartCheckout", "whatsapp", "pwa", "deploy", "qa", "docs"],
+    scope: { pages: 2, screens: 6, entities: 2, roles: 0, integrations: 1, automations: 1 },
+    modules: ["discovery", "uxui", "frontendApp", "catalog", "cartCheckout", "whatsapp", "deploy", "qa", "docs"],
   },
   {
     id: "webappMvp",
     name: "Web app / MVP",
-    description: "Producto funcional con flujos, datos, autenticación y panel mínimo.",
-    scope: { pages: 2, screens: 14, entities: 6, roles: 3, integrations: 2, automations: 2 },
-    modules: ["discovery", "productSpec", "uxui", "frontendApp", "backendApi", "database", "auth", "admin", "files", "deploy", "qa", "docs"],
+    description: "Producto funcional con flujos, datos, autenticación opcional y panel mínimo.",
+    scope: { pages: 1, screens: 10, entities: 4, roles: 2, integrations: 1, automations: 1 },
+    modules: ["discovery", "productSpec", "uxui", "frontendApp", "backendApi", "database", "auth", "admin", "deploy", "qa", "docs"],
   },
   {
     id: "internalSystem",
-    name: "Sistema interno",
-    description: "Operación interna, paneles, permisos, reglas de negocio y datos persistentes.",
-    scope: { pages: 1, screens: 22, entities: 10, roles: 4, integrations: 3, automations: 4 },
-    modules: ["discovery", "productSpec", "uxui", "frontendApp", "backendApi", "database", "auth", "admin", "analytics", "externalIntegrations", "notifications", "deploy", "qa", "docs", "training"],
+    name: "Sistema interno por fases",
+    description: "Primer módulo operativo para ordenar un proceso interno. No asumir sistema completo de entrada.",
+    scope: { pages: 1, screens: 12, entities: 5, roles: 2, integrations: 1, automations: 1 },
+    modules: ["discovery", "productSpec", "uxui", "frontendApp", "backendApi", "database", "auth", "admin", "deploy", "qa", "docs"],
   },
   {
     id: "dashboard",
     name: "Dashboard / reportes",
     description: "Visualización de métricas, filtros, reportes y fuentes de datos.",
-    scope: { pages: 1, screens: 12, entities: 7, roles: 2, integrations: 3, automations: 2 },
-    modules: ["discovery", "productSpec", "uxui", "frontendApp", "backendApi", "database", "analytics", "externalIntegrations", "search", "deploy", "qa", "docs"],
+    scope: { pages: 1, screens: 8, entities: 4, roles: 1, integrations: 1, automations: 1 },
+    modules: ["discovery", "productSpec", "uxui", "frontendApp", "backendApi", "database", "analytics", "deploy", "qa", "docs"],
   },
   {
     id: "automation",
     name: "Automatización / integración",
     description: "Flujos entre herramientas, APIs, bots, sincronización o tareas repetibles.",
-    scope: { pages: 0, screens: 3, entities: 4, roles: 1, integrations: 4, automations: 6 },
-    modules: ["discovery", "productSpec", "backendApi", "database", "externalIntegrations", "automation", "notifications", "deploy", "qa", "docs"],
+    scope: { pages: 0, screens: 2, entities: 2, roles: 1, integrations: 2, automations: 2 },
+    modules: ["discovery", "productSpec", "externalIntegrations", "automation", "deploy", "qa", "docs"],
   },
   {
     id: "backendApi",
     name: "Backend / API",
     description: "API, base de datos, autenticación, servicios y documentación técnica.",
-    scope: { pages: 0, screens: 0, entities: 10, roles: 3, integrations: 3, automations: 2 },
-    modules: ["discovery", "productSpec", "backendApi", "database", "auth", "externalIntegrations", "security", "deploy", "qa", "docs"],
+    scope: { pages: 0, screens: 0, entities: 5, roles: 2, integrations: 1, automations: 1 },
+    modules: ["discovery", "productSpec", "backendApi", "database", "auth", "deploy", "qa", "docs"],
   },
   {
     id: "aiData",
     name: "IA / datos / scraping",
-    description: "Automatización con IA, procesamiento de datos, extracción o análisis experimental.",
-    scope: { pages: 0, screens: 6, entities: 6, roles: 1, integrations: 3, automations: 5 },
-    modules: ["discovery", "research", "productSpec", "backendApi", "database", "aiData", "automation", "analytics", "security", "deploy", "qa", "docs"],
+    description: "Prototipo o validación con IA, procesamiento de datos, extracción o análisis experimental.",
+    scope: { pages: 0, screens: 3, entities: 3, roles: 1, integrations: 1, automations: 2 },
+    modules: ["discovery", "research", "productSpec", "aiData", "automation", "deploy", "qa", "docs"],
   },
   {
     id: "unknown",
     name: "Proyecto desconocido / exploratorio",
     description: "Cuando todavía no saben bien qué van a construir o es territorio nuevo.",
-    scope: { pages: 2, screens: 10, entities: 6, roles: 2, integrations: 2, automations: 2 },
-    modules: ["discovery", "research", "productSpec", "uxui", "frontendApp", "backendApi", "database", "deploy", "qa", "docs"],
+    scope: { pages: 0, screens: 4, entities: 2, roles: 1, integrations: 1, automations: 1 },
+    modules: ["discovery", "research", "productSpec"],
   },
 ];
 
@@ -403,18 +403,57 @@ const MODULES = [
   },
 ];
 
+const PRICING_PROFILES = [
+  {
+    id: "entrepreneur",
+    label: "Emprendedor / entrada accesible",
+    shortLabel: "Emprendedor",
+    priceFactor: 0.72,
+    defaults: { hourlyRate: 8000, minimumFee: 70000, pmPercent: 6, qaPercent: 7, bufferPercent: 10, marginPercent: 22, roundingStep: 5000 },
+    phase: [0.32, 0.46],
+    note: "Usalo para negocios chicos, primeras ventas, MVPs livianos y clientes que necesitan empezar sin un sistema enorme.",
+  },
+  {
+    id: "growth",
+    label: "PyME / negocio en crecimiento",
+    shortLabel: "PyME",
+    priceFactor: 0.86,
+    defaults: { hourlyRate: 9500, minimumFee: 90000, pmPercent: 8, qaPercent: 8, bufferPercent: 12, marginPercent: 28, roundingStep: 5000 },
+    phase: [0.38, 0.55],
+    note: "Usalo cuando el cliente ya opera, puede pagar más que un emprendimiento y necesita algo más estable.",
+  },
+  {
+    id: "standard",
+    label: "Profesional / producción estándar",
+    shortLabel: "Profesional",
+    priceFactor: 1,
+    defaults: { hourlyRate: 12000, minimumFee: 120000, pmPercent: 10, qaPercent: 12, bufferPercent: 15, marginPercent: 35, roundingStep: 10000 },
+    phase: [0.45, 0.65],
+    note: "Usalo para proyectos donde Dayle asume más responsabilidad técnica, soporte y expectativas de producción.",
+  },
+  {
+    id: "formal",
+    label: "Formal / alta responsabilidad",
+    shortLabel: "Formal",
+    priceFactor: 1.16,
+    defaults: { hourlyRate: 15000, minimumFee: 180000, pmPercent: 12, qaPercent: 14, bufferPercent: 20, marginPercent: 40, roundingStep: 25000 },
+    phase: [0.5, 0.72],
+    note: "Usalo para sistemas críticos, empresas más formales, datos sensibles, integraciones riesgosas o entregas con mucha garantía.",
+  },
+];
+
 const OPTIONS = {
   designLevel: [
-    { id: "basic", label: "Básico / funcional", factor: 0.88 },
+    { id: "basic", label: "Básico / funcional", factor: 0.82 },
     { id: "clean", label: "Limpio y profesional", factor: 1 },
     { id: "custom", label: "Personalizado", factor: 1.16 },
-    { id: "premium", label: "Premium / muy visual", factor: 1.34 },
+    { id: "premium", label: "Premium / muy visual", factor: 1.26 },
   ],
   qualityLevel: [
-    { id: "lean", label: "MVP liviano", factor: 0.92 },
+    { id: "lean", label: "MVP liviano", factor: 0.86 },
     { id: "production", label: "Producción estándar", factor: 1 },
     { id: "scalable", label: "Escalable y mantenible", factor: 1.18 },
-    { id: "critical", label: "Crítico / alta confiabilidad", factor: 1.42 },
+    { id: "critical", label: "Crítico / alta confiabilidad", factor: 1.34 },
   ],
   urgencyLevel: [
     { id: "normal", label: "Normal", factor: 1 },
@@ -425,14 +464,14 @@ const OPTIONS = {
   ambiguityLevel: [
     { id: "clear", label: "Claro y cerrado", factor: 0.95 },
     { id: "normal", label: "Medianamente claro", factor: 1 },
-    { id: "open", label: "Abierto / cambiante", factor: 1.22 },
-    { id: "unknown", label: "Muy incierto", factor: 1.48 },
+    { id: "open", label: "Abierto / cambiante", factor: 1.16 },
+    { id: "unknown", label: "Muy incierto", factor: 1.32 },
   ],
   noveltyLevel: [
     { id: "known", label: "Ya lo hicimos antes", factor: 0.95 },
     { id: "similar", label: "Similar a algo hecho", factor: 1 },
     { id: "new", label: "Nuevo para el equipo", factor: 1.22 },
-    { id: "research", label: "Investigación real", factor: 1.52 },
+    { id: "research", label: "Investigación real", factor: 1.35 },
   ],
   clientLevel: [
     { id: "clear", label: "Cliente claro y disponible", factor: 0.96 },
@@ -443,8 +482,8 @@ const OPTIONS = {
   ],
   rightsLevel: [
     { id: "license", label: "Licencia de uso", factor: 1 },
-    { id: "source", label: "Entrega de código fuente", factor: 1.22 },
-    { id: "exclusive", label: "Producto exclusivo / cesión amplia", factor: 1.48 },
+    { id: "source", label: "Entrega de código fuente", factor: 1.14 },
+    { id: "exclusive", label: "Producto exclusivo / cesión amplia", factor: 1.32 },
   ],
   supportLevel: [
     { id: "none", label: "Sin soporte post-entrega", hours: [0, 0] },
@@ -462,53 +501,55 @@ const COMPLEXITY_OPTIONS = [
 ];
 
 const EXAMPLE_STATE = {
-  projectName: "Sistema interno de pedidos y operaciones",
+  projectName: "MVP interno de pedidos y operaciones",
   projectType: "internalSystem",
-  scope: { pages: 2, screens: 24, entities: 12, roles: 4, integrations: 4, automations: 5 },
+  scope: { pages: 1, screens: 12, entities: 5, roles: 2, integrations: 1, automations: 1 },
   factors: {
-    designLevel: "custom",
-    qualityLevel: "scalable",
-    urgencyLevel: "soon",
+    designLevel: "clean",
+    qualityLevel: "production",
+    urgencyLevel: "normal",
     ambiguityLevel: "open",
     noveltyLevel: "similar",
     clientLevel: "normal",
     rightsLevel: "license",
-    supportLevel: "launch",
-    revisionRounds: 3,
+    supportLevel: "basic",
+    revisionRounds: 2,
   },
   commercial: {
-    hourlyRate: 12000,
-    minimumFee: 90000,
-    pmPercent: 12,
-    qaPercent: 14,
-    bufferPercent: 18,
-    marginPercent: 38,
-    externalCosts: 60000,
-    roundingStep: 10000,
+    pricingProfile: "entrepreneur",
+    hourlyRate: 8000,
+    minimumFee: 70000,
+    pmPercent: 6,
+    qaPercent: 7,
+    bufferPercent: 10,
+    marginPercent: 22,
+    externalCosts: 30000,
+    roundingStep: 5000,
   },
   modules: {
     discovery: { enabled: true, complexity: "medium" },
-    productSpec: { enabled: true, complexity: "high" },
-    uxui: { enabled: true, complexity: "high" },
-    frontendApp: { enabled: true, complexity: "high" },
-    backendApi: { enabled: true, complexity: "high" },
-    database: { enabled: true, complexity: "high" },
+    productSpec: { enabled: true, complexity: "medium" },
+    uxui: { enabled: true, complexity: "medium" },
+    frontendApp: { enabled: true, complexity: "medium" },
+    backendApi: { enabled: true, complexity: "medium" },
+    database: { enabled: true, complexity: "medium" },
     auth: { enabled: true, complexity: "medium" },
-    admin: { enabled: true, complexity: "high" },
-    analytics: { enabled: true, complexity: "medium" },
-    externalIntegrations: { enabled: true, complexity: "high" },
-    notifications: { enabled: true, complexity: "medium" },
-    security: { enabled: true, complexity: "medium" },
+    admin: { enabled: true, complexity: "medium" },
+    analytics: { enabled: false, complexity: "medium" },
+    externalIntegrations: { enabled: false, complexity: "medium" },
+    notifications: { enabled: false, complexity: "medium" },
+    security: { enabled: false, complexity: "medium" },
     deploy: { enabled: true, complexity: "medium" },
-    qa: { enabled: true, complexity: "high" },
+    qa: { enabled: true, complexity: "medium" },
     docs: { enabled: true, complexity: "medium" },
-    training: { enabled: true, complexity: "medium" },
+    training: { enabled: false, complexity: "medium" },
   },
 };
 
 const elements = {
   projectName: document.getElementById("project-name"),
   projectType: document.getElementById("project-type"),
+  pricingProfile: document.getElementById("pricing-profile"),
   hourlyRate: document.getElementById("hourly-rate"),
   minimumFee: document.getElementById("minimum-fee"),
   pagesCount: document.getElementById("pages-count"),
@@ -588,6 +629,10 @@ function getOption(group, id) {
   return OPTIONS[group].find((item) => item.id === id) || OPTIONS[group][0];
 }
 
+function getPricingProfile(id) {
+  return PRICING_PROFILES.find((item) => item.id === id) || PRICING_PROFILES[0];
+}
+
 function getComplexity(id) {
   return COMPLEXITY_OPTIONS.find((item) => item.id === id) || COMPLEXITY_OPTIONS[1];
 }
@@ -620,12 +665,13 @@ function getDefaultState() {
       revisionRounds: 2,
     },
     commercial: {
-      hourlyRate: 12000,
-      minimumFee: 90000,
-      pmPercent: 10,
-      qaPercent: 12,
-      bufferPercent: 15,
-      marginPercent: 35,
+      pricingProfile: "entrepreneur",
+      hourlyRate: 8000,
+      minimumFee: 70000,
+      pmPercent: 6,
+      qaPercent: 7,
+      bufferPercent: 10,
+      marginPercent: 22,
       externalCosts: 0,
       roundingStep: 5000,
     },
@@ -645,6 +691,7 @@ function populateStaticControls() {
     (preset) => `<option value="${escapeHtml(preset.id)}">${escapeHtml(preset.name)}</option>`,
   ).join("");
 
+  populateSelect(elements.pricingProfile, PRICING_PROFILES, "entrepreneur");
   populateSelect(elements.designLevel, OPTIONS.designLevel, "clean");
   populateSelect(elements.qualityLevel, OPTIONS.qualityLevel, "production");
   populateSelect(elements.urgencyLevel, OPTIONS.urgencyLevel, "normal");
@@ -743,6 +790,7 @@ function loadStateFromControls(options = {}) {
       revisionRounds: clampNumber(elements.revisionRounds.value, 0, 12),
     },
     commercial: {
+      pricingProfile: elements.pricingProfile.value,
       hourlyRate: clampNumber(elements.hourlyRate.value, 0, 9999999),
       minimumFee: clampNumber(elements.minimumFee.value, 0, 99999999),
       pmPercent: clampNumber(elements.pmPercent.value, 0, 80),
@@ -766,6 +814,7 @@ function applyState(state) {
 
   elements.projectName.value = safeState.projectName;
   elements.projectType.value = safeState.projectType;
+  elements.pricingProfile.value = safeState.commercial.pricingProfile;
   elements.hourlyRate.value = safeState.commercial.hourlyRate;
   elements.minimumFee.value = safeState.commercial.minimumFee;
   elements.pagesCount.value = safeState.scope.pages;
@@ -809,13 +858,18 @@ function normalizeState(state) {
     }
   });
 
+  const safeCommercial = { ...fallback.commercial, ...(state.commercial || {}) };
+  safeCommercial.pricingProfile = PRICING_PROFILES.some((item) => item.id === safeCommercial.pricingProfile)
+    ? safeCommercial.pricingProfile
+    : fallback.commercial.pricingProfile;
+
   return {
     ...fallback,
     ...state,
     projectType: preset,
     scope: { ...fallback.scope, ...(state.scope || {}) },
     factors: { ...fallback.factors, ...(state.factors || {}) },
-    commercial: { ...fallback.commercial, ...(state.commercial || {}) },
+    commercial: safeCommercial,
     modules,
   };
 }
@@ -935,7 +989,8 @@ function calculateEstimate(state) {
   const hoursMax = factoredMax * (1 + overheadRate);
   const hoursRecommended = hoursMin + (hoursMax - hoursMin) * 0.58;
   const rights = getOption("rightsLevel", state.factors.rightsLevel);
-  const grossFactor = (1 + state.commercial.marginPercent / 100) * rights.factor;
+  const profile = getPricingProfile(state.commercial.pricingProfile);
+  const grossFactor = (1 + state.commercial.marginPercent / 100) * rights.factor * profile.priceFactor;
   const rounding = state.commercial.roundingStep;
 
   const internalCostMin = hoursMin * state.commercial.hourlyRate;
@@ -953,6 +1008,7 @@ function calculateEstimate(state) {
 
   const riskScore = calculateRiskScore(state, selectedModules, globalFactor);
   const risk = getRiskLabel(riskScore);
+  const phase = calculatePhaseSuggestion(state, profile, priceMin, priceMax, priceRecommended, riskScore, selectedModules.length);
 
   return {
     selectedModules,
@@ -976,6 +1032,35 @@ function calculateEstimate(state) {
     risk,
     rights,
     support,
+    profile,
+    phase,
+  };
+}
+
+function calculatePhaseSuggestion(state, profile, priceMin, priceMax, priceRecommended, riskScore, moduleCount) {
+  const projectTypesForPhases = ["webappMvp", "internalSystem", "dashboard", "automation", "backendApi", "aiData", "unknown"];
+  const shouldPhase =
+    projectTypesForPhases.includes(state.projectType) ||
+    riskScore >= 58 ||
+    moduleCount >= 10 ||
+    state.scope.screens >= 10 ||
+    state.scope.entities >= 5 ||
+    state.factors.ambiguityLevel !== "clear";
+
+  if (!shouldPhase) return null;
+
+  const [minFactor, maxFactor] = profile.phase;
+  const phaseMin = roundMoney(Math.max(state.commercial.minimumFee, priceMin * minFactor), state.commercial.roundingStep);
+  const phaseMax = Math.max(phaseMin, roundMoney(Math.max(state.commercial.minimumFee, priceMax * maxFactor), state.commercial.roundingStep));
+  const phaseRecommended = clampNumber(roundMoney(priceRecommended * ((minFactor + maxFactor) / 2), state.commercial.roundingStep), phaseMin, phaseMax);
+
+  return {
+    min: phaseMin,
+    max: phaseMax,
+    recommended: phaseRecommended,
+    reason: state.factors.ambiguityLevel === "clear"
+      ? "Conviene vender una primera versión útil antes del sistema completo."
+      : "El alcance todavía no está cerrado. Conviene vender relevamiento o MVP inicial antes de prometer el sistema completo.",
   };
 }
 
@@ -1020,7 +1105,15 @@ function buildAlerts(state, estimate) {
     alerts.push("Separar costos externos del precio de desarrollo: hosting, dominio, APIs, cuentas, plantillas o servicios pagos.");
   }
 
-  return alerts.slice(0, 8);
+  if (estimate.phase) {
+    alerts.push("No conviene vender este proyecto como sistema completo de entrada. Presentalo como fase inicial, MVP o relevamiento pago.");
+  }
+
+  if (state.commercial.pricingProfile === "entrepreneur" && estimate.riskScore >= 65) {
+    alerts.push("Modo emprendedor con riesgo alto: bajar alcance antes de subir precio. El objetivo es que sea comprable y seguro para Dayle.");
+  }
+
+  return alerts.slice(0, 9);
 }
 
 function buildQuestions(state, estimate) {
@@ -1073,10 +1166,12 @@ function buildPromptForAi(state, estimate) {
     `Tipo base: ${PRESETS.find((preset) => preset.id === state.projectType)?.name || state.projectType}.`,
     `Módulos incluidos: ${enabledModules || "ninguno"}.`,
     `Tamaño: ${state.scope.pages} páginas, ${state.scope.screens} pantallas, ${state.scope.entities} entidades, ${state.scope.roles} roles, ${state.scope.integrations} integraciones, ${state.scope.automations} automatizaciones.`,
+    `Modo comercial: ${estimate.profile.label}.`,
     `Riesgo estimado: ${estimate.risk.label} (${estimate.riskScore}/100).`,
     `Horas estimadas: ${formatHours(estimate.hoursMin)} a ${formatHours(estimate.hoursMax)}.`,
     `Rango sugerido: ${formatMoney(estimate.priceMin)} a ${formatMoney(estimate.priceMax)}. Recomendado: ${formatMoney(estimate.priceRecommended)}.`,
-    "Decime si el rango es razonable, qué riesgos faltan, qué exclusiones debería aclarar y cómo lo presentaría al cliente.",
+    estimate.phase ? `Fase inicial sugerida: ${formatMoney(estimate.phase.min)} a ${formatMoney(estimate.phase.max)}. Recomendado: ${formatMoney(estimate.phase.recommended)}.` : "",
+    "Decime si el rango es razonable para el perfil del cliente, qué alcance bajaría para hacerlo emprendedor-friendly, qué riesgos faltan, qué exclusiones debería aclarar y cómo lo presentaría por fases.",
   ].join("\n");
 }
 
@@ -1089,10 +1184,12 @@ function buildSummaryText(state, estimate) {
   return [
     `Estimación interna — ${state.projectName}`,
     `Tipo: ${preset?.name || state.projectType}`,
+    `Modo comercial: ${estimate.profile.label}`,
     `Riesgo: ${estimate.risk.label} (${estimate.riskScore}/100)`,
     `Horas: ${formatHours(estimate.hoursMin)} a ${formatHours(estimate.hoursMax)} · Recomendado: ${formatHours(estimate.hoursRecommended)}`,
     `Rango: ${formatMoney(estimate.priceMin)} a ${formatMoney(estimate.priceMax)}`,
     `Precio recomendado: ${formatMoney(estimate.priceRecommended)}`,
+    estimate.phase ? `Fase inicial sugerida: ${formatMoney(estimate.phase.min)} a ${formatMoney(estimate.phase.max)} · Recomendado: ${formatMoney(estimate.phase.recommended)}` : "",
     state.commercial.externalCosts > 0 ? `Total con costos externos estimados: ${formatMoney(estimate.clientTotalRecommended)}` : "",
     "",
     "Módulos incluidos:",
@@ -1123,10 +1220,25 @@ function renderResult(state, estimate) {
       <p class="eyebrow small">Resultado vivo</p>
       <h2>${escapeHtml(state.projectName)}</h2>
       <p>${escapeHtml(preset?.description || "Estimación personalizada.")}</p>
+      <div class="result-note">
+        <strong>Modo ${escapeHtml(estimate.profile.shortLabel)}</strong>
+        <span>${escapeHtml(estimate.profile.note)}</span>
+      </div>
     </div>
 
+    ${
+      estimate.phase
+        ? `<div class="phase-price">
+            <span>Fase inicial sugerida</span>
+            <strong>${formatMoney(estimate.phase.recommended)}</strong>
+            <small>${formatMoney(estimate.phase.min)} – ${formatMoney(estimate.phase.max)}</small>
+            <em>${escapeHtml(estimate.phase.reason)}</em>
+          </div>`
+        : ""
+    }
+
     <div class="main-price">
-      <span>Precio recomendado</span>
+      <span>Proyecto configurado completo</span>
       <strong>${formatMoney(estimate.priceRecommended)}</strong>
       <small>Rango sugerido: ${formatMoney(estimate.priceMin)} – ${formatMoney(estimate.priceMax)}</small>
       ${state.commercial.externalCosts > 0 ? `<em>Total con costos externos: ${formatMoney(estimate.clientTotalRecommended)}</em>` : ""}
@@ -1149,9 +1261,9 @@ function renderResult(state, estimate) {
         <small>activos</small>
       </div>
       <div class="kpi">
-        <span>Factor global</span>
-        <strong>x${round1(estimate.globalFactor)}</strong>
-        <small>riesgo + criterio</small>
+        <span>Modo</span>
+        <strong>${escapeHtml(estimate.profile.shortLabel)}</strong>
+        <small>factor comercial x${round1(estimate.profile.priceFactor)}</small>
       </div>
     </div>
 
@@ -1236,7 +1348,11 @@ function applyPreset(presetId) {
   if (preset.id === "unknown") {
     nextState.factors.ambiguityLevel = "unknown";
     nextState.factors.noveltyLevel = "new";
-    nextState.commercial.bufferPercent = Math.max(nextState.commercial.bufferPercent, 25);
+    nextState.commercial.bufferPercent = Math.max(nextState.commercial.bufferPercent, 14);
+  }
+
+  if (["internalSystem", "aiData", "backendApi"].includes(preset.id)) {
+    nextState.factors.ambiguityLevel = nextState.factors.ambiguityLevel === "clear" ? "normal" : nextState.factors.ambiguityLevel;
   }
 
   applyState(nextState);
@@ -1297,6 +1413,19 @@ function slugify(value) {
     .replace(/(^-|-$)/g, "") || "proyecto";
 }
 
+function applyPricingProfile(profileId) {
+  const profile = getPricingProfile(profileId);
+  elements.pricingProfile.value = profile.id;
+  elements.hourlyRate.value = profile.defaults.hourlyRate;
+  elements.minimumFee.value = profile.defaults.minimumFee;
+  elements.pmPercent.value = profile.defaults.pmPercent;
+  elements.qaPercent.value = profile.defaults.qaPercent;
+  elements.bufferPercent.value = profile.defaults.bufferPercent;
+  elements.marginPercent.value = profile.defaults.marginPercent;
+  elements.roundingStep.value = profile.defaults.roundingStep;
+  updateAll();
+}
+
 function bindEvents() {
   document.addEventListener("input", (event) => {
     const target = event.target;
@@ -1312,6 +1441,10 @@ function bindEvents() {
 
   elements.projectType.addEventListener("change", () => {
     applyPreset(elements.projectType.value);
+  });
+
+  elements.pricingProfile.addEventListener("change", () => {
+    applyPricingProfile(elements.pricingProfile.value);
   });
 
   elements.loadExample.addEventListener("click", () => applyState(EXAMPLE_STATE));

@@ -27,23 +27,23 @@
           <p class="eyebrow">Herramienta interna</p>
           <h1>Estimador de presupuestos por proyecto</h1>
           <p>
-            Guía de cálculo para proyectos simples, web apps, sistemas internos, MVPs,
-            automatizaciones, backends, dashboards, integraciones y trabajos con incertidumbre.
-            No reemplaza criterio comercial: ordena el análisis y entrega un rango defendible.
+            Guía interna para estimar proyectos por fases, módulos, horas, riesgo y perfil de cliente.
+            Está pensada para Dayle hoy: emprendedor-friendly por defecto, pero capaz de analizar
+            sistemas internos, automatizaciones, backends, dashboards e ideas todavía inciertas.
           </p>
         </div>
         <div class="hero-card" aria-label="Resumen de uso">
           <span>Uso recomendado</span>
-          <strong>Rango + criterio</strong>
-          <p>Estimá horas, riesgo y módulos. Después ajusten el número final con criterio humano e IA.</p>
+          <strong>Entrada + fases</strong>
+          <p>Primero obtené una base. Después decidí si se vende completo, como MVP o como relevamiento pago.</p>
         </div>
       </section>
 
       <section class="notice-panel">
         <strong>No usar como precio automático.</strong>
         <span>
-          El resultado sirve como base interna. Antes de enviar un presupuesto, revisá alcance,
-          exclusiones, urgencia, cliente, soporte, licencia y costos externos.
+          El resultado sirve como base interna. Para proyectos grandes, no lo uses como precio cerrado:
+          convertí el número en fases, MVP, relevamiento pago y mantenimiento mensual.
         </span>
       </section>
 
@@ -54,10 +54,10 @@
               <div>
                 <p class="eyebrow small">Paso 1</p>
                 <h2 id="project-title">Base del proyecto</h2>
-                <p>Elegí un punto de partida. Después podés activar módulos manualmente.</p>
+                <p>Elegí el tipo de proyecto y el modo comercial. El modo no cambia la realidad técnica: cambia cómo conviene venderla.</p>
               </div>
               <div class="button-row">
-                <button id="load-example" class="secondary-button" type="button">Ejemplo complejo</button>
+                <button id="load-example" class="secondary-button" type="button">Ejemplo por fases</button>
                 <button id="reset-tool" class="secondary-button danger-soft" type="button">Resetear</button>
               </div>
             </div>
@@ -71,16 +71,25 @@
               <label>
                 Tipo de proyecto
                 <select id="project-type"></select>
+                <small class="field-hint">Usalo como plantilla inicial. Después mandan los módulos reales.</small>
+              </label>
+
+              <label>
+                Modo comercial
+                <select id="pricing-profile"></select>
+                <small class="field-hint">Emprendedor prioriza entrada accesible. PyME equilibra precio y responsabilidad. Formal exige más margen y QA.</small>
               </label>
 
               <label>
                 Valor hora interno
-                <input id="hourly-rate" type="number" min="1000" step="500" value="12000" />
+                <input id="hourly-rate" type="number" min="1000" step="500" value="8000" />
+                <small class="field-hint">Base interna para calcular esfuerzo. No es necesariamente lo que se muestra al cliente.</small>
               </label>
 
               <label>
                 Piso mínimo de proyecto
-                <input id="minimum-fee" type="number" min="0" step="5000" value="90000" />
+                <input id="minimum-fee" type="number" min="0" step="5000" value="70000" />
+                <small class="field-hint">Evita presupuestos demasiado bajos para trabajos que igual consumen reunión, deploy y soporte.</small>
               </label>
             </form>
           </section>
@@ -89,7 +98,7 @@
             <div class="panel-header">
               <p class="eyebrow small">Paso 2</p>
               <h2 id="scope-title">Tamaño del alcance</h2>
-              <p>Estos valores escalan los módulos. No hace falta que sean exactos; tienen que ser honestos.</p>
+              <p>Estos valores escalan el cálculo. No busques precisión falsa: usalos para no subestimar tamaño, datos, roles e integraciones.</p>
             </div>
 
             <div class="range-grid">
@@ -129,24 +138,41 @@
                 <output id="automations-count-output">2</output>
               </label>
             </div>
+
+            <div class="helper-grid">
+              <article class="helper-card">
+                <strong>Páginas vs pantallas</strong>
+                <p>Página es algo público tipo landing. Pantalla es una vista de app: login, listado, detalle, editor, dashboard, etc.</p>
+              </article>
+              <article class="helper-card">
+                <strong>Entidad de datos</strong>
+                <p>Algo que el sistema guarda o administra: producto, pedido, cliente, usuario, turno, factura, tarea, movimiento.</p>
+              </article>
+              <article class="helper-card">
+                <strong>Integración o automatización</strong>
+                <p>Integración conecta con otro servicio. Automatización ejecuta un flujo: avisar, sincronizar, calcular, generar o enviar.</p>
+              </article>
+            </div>
           </section>
 
           <section class="panel" aria-labelledby="factor-title">
             <div class="panel-header">
               <p class="eyebrow small">Paso 3</p>
               <h2 id="factor-title">Factores de riesgo y criterio comercial</h2>
-              <p>Estos multiplicadores evitan cobrar igual un proyecto claro que uno incierto o urgente.</p>
+              <p>No todo se cobra por cantidad de pantallas. Un proyecto urgente, ambiguo o nuevo para el equipo necesita más cuidado.</p>
             </div>
 
             <div class="form-grid three-columns">
               <label>
                 Diseño visual
                 <select id="design-level"></select>
+                <small class="field-hint">Básico es correcto y simple. Premium implica más detalle visual, animaciones y revisión.</small>
               </label>
 
               <label>
                 Calidad técnica esperada
                 <select id="quality-level"></select>
+                <small class="field-hint">MVP liviano valida rápido. Crítico exige pruebas, seguridad y estabilidad más serias.</small>
               </label>
 
               <label>
@@ -157,6 +183,7 @@
               <label>
                 Claridad del alcance
                 <select id="ambiguity-level"></select>
+                <small class="field-hint">Si el cliente todavía no sabe bien qué quiere, conviene vender discovery antes de desarrollo cerrado.</small>
               </label>
 
               <label>
@@ -172,6 +199,7 @@
               <label>
                 Entrega / licencia
                 <select id="rights-level"></select>
+                <small class="field-hint">Licencia de uso es más accesible. Entregar código o exclusividad debe valer más.</small>
               </label>
 
               <label>
@@ -184,6 +212,17 @@
                 <input id="revision-rounds" type="number" min="0" max="12" value="2" />
               </label>
             </div>
+
+            <div class="helper-grid">
+              <article class="helper-card">
+                <strong>Regla práctica</strong>
+                <p>Si dudás entre dos opciones, elegí la más baja y anotá la duda como pregunta. No infles por miedo.</p>
+              </article>
+              <article class="helper-card">
+                <strong>Alcance abierto</strong>
+                <p>Cuando el alcance está verde, la respuesta comercial no es subir mucho el precio: es proponer una fase corta de definición.</p>
+              </article>
+            </div>
           </section>
 
           <section class="panel" aria-labelledby="module-title">
@@ -191,7 +230,7 @@
               <div>
                 <p class="eyebrow small">Paso 4</p>
                 <h2 id="module-title">Módulos del proyecto</h2>
-                <p>Activá lo que entra. La complejidad por módulo pesa más que el tipo de proyecto.</p>
+                <p>Activá solo lo que entra en esta fase. Para sistemas grandes, presupuestá el primer módulo útil, no todo el universo.</p>
               </div>
               <button id="toggle-all-modules" class="secondary-button" type="button">Activar todo</button>
             </div>
@@ -213,37 +252,43 @@
             <div class="panel-header">
               <p class="eyebrow small">Paso 5</p>
               <h2 id="commercial-title">Márgenes, buffer y costos externos</h2>
-              <p>Separá costo interno, margen comercial y gastos que debería pagar el cliente aparte.</p>
+              <p>Esta sección no es “cobrar por cobrar”. Cubre coordinación, pruebas, imprevistos y ganancia real. En modo emprendedor va más liviana.</p>
             </div>
 
             <div class="form-grid three-columns">
               <label>
                 Gestión / coordinación (%)
+                <small class="field-hint">Tiempo de reuniones, aclaraciones, orden del alcance, seguimiento y entrega. En trabajos chicos puede ser bajo, pero nunca cero.</small>
                 <input id="pm-percent" type="number" min="0" max="80" value="10" />
               </label>
 
               <label>
                 QA / pruebas manuales (%)
+                <small class="field-hint">Pruebas en mobile, flujos críticos, formularios, deploy y revisión antes de entregar.</small>
                 <input id="qa-percent" type="number" min="0" max="80" value="12" />
               </label>
 
               <label>
                 Buffer técnico (%)
+                <small class="field-hint">Colchón por bugs, cambios menores, dependencias externas o cosas que tarden más de lo previsto.</small>
                 <input id="buffer-percent" type="number" min="0" max="120" value="15" />
               </label>
 
               <label>
                 Margen comercial (%)
+                <small class="field-hint">Ganancia para que Dayle pueda crecer. No es lo mismo que sueldo por hora.</small>
                 <input id="margin-percent" type="number" min="0" max="200" value="35" />
               </label>
 
               <label>
                 Costos externos estimados
+                <small class="field-hint">Dominio, hosting, APIs, plantillas, cuentas pagas o servicios que conviene cobrar aparte.</small>
                 <input id="external-costs" type="number" min="0" step="1000" value="0" />
               </label>
 
               <label>
                 Redondeo comercial
+                <small class="field-hint">Redondea el resultado para presentarlo prolijo. No altera el análisis técnico.</small>
                 <select id="rounding-step">
                   <option value="1000">$1.000</option>
                   <option value="5000" selected>$5.000</option>
