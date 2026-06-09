@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Estimador de presupuestos · Dayle Code</title>
+    <meta
+      name="description"
+      content="Herramienta interna para estimar rangos de presupuesto por proyecto, módulos, riesgos, horas y criterios comerciales."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="../../">Dayle Code</a>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="../../">Inicio</a>
+          <a href="../">Herramientas</a>
+          <a href="../../docs/">Documentación</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Herramienta interna</p>
+          <h1>Estimador de presupuestos por proyecto</h1>
+          <p>
+            Guía de cálculo para proyectos simples, web apps, sistemas internos, MVPs,
+            automatizaciones, backends, dashboards, integraciones y trabajos con incertidumbre.
+            No reemplaza criterio comercial: ordena el análisis y entrega un rango defendible.
+          </p>
+        </div>
+        <div class="hero-card" aria-label="Resumen de uso">
+          <span>Uso recomendado</span>
+          <strong>Rango + criterio</strong>
+          <p>Estimá horas, riesgo y módulos. Después ajusten el número final con criterio humano e IA.</p>
+        </div>
+      </section>
+
+      <section class="notice-panel">
+        <strong>No usar como precio automático.</strong>
+        <span>
+          El resultado sirve como base interna. Antes de enviar un presupuesto, revisá alcance,
+          exclusiones, urgencia, cliente, soporte, licencia y costos externos.
+        </span>
+      </section>
+
+      <div class="workspace">
+        <section class="form-column" aria-label="Configuración del presupuesto">
+          <section class="panel" aria-labelledby="project-title">
+            <div class="panel-header panel-header-row">
+              <div>
+                <p class="eyebrow small">Paso 1</p>
+                <h2 id="project-title">Base del proyecto</h2>
+                <p>Elegí un punto de partida. Después podés activar módulos manualmente.</p>
+              </div>
+              <div class="button-row">
+                <button id="load-example" class="secondary-button" type="button">Ejemplo complejo</button>
+                <button id="reset-tool" class="secondary-button danger-soft" type="button">Resetear</button>
+              </div>
+            </div>
+
+            <form class="form-grid two-columns" autocomplete="off">
+              <label>
+                Nombre del proyecto
+                <input id="project-name" type="text" value="Nuevo proyecto" />
+              </label>
+
+              <label>
+                Tipo de proyecto
+                <select id="project-type"></select>
+              </label>
+
+              <label>
+                Valor hora interno
+                <input id="hourly-rate" type="number" min="1000" step="500" value="12000" />
+              </label>
+
+              <label>
+                Piso mínimo de proyecto
+                <input id="minimum-fee" type="number" min="0" step="5000" value="90000" />
+              </label>
+            </form>
+          </section>
+
+          <section class="panel" aria-labelledby="scope-title">
+            <div class="panel-header">
+              <p class="eyebrow small">Paso 2</p>
+              <h2 id="scope-title">Tamaño del alcance</h2>
+              <p>Estos valores escalan los módulos. No hace falta que sean exactos; tienen que ser honestos.</p>
+            </div>
+
+            <div class="range-grid">
+              <label class="range-field">
+                <span>Páginas / secciones públicas</span>
+                <input id="pages-count" type="range" min="0" max="40" value="5" />
+                <output id="pages-count-output">5</output>
+              </label>
+
+              <label class="range-field">
+                <span>Pantallas de app / dashboard</span>
+                <input id="screens-count" type="range" min="0" max="80" value="8" />
+                <output id="screens-count-output">8</output>
+              </label>
+
+              <label class="range-field">
+                <span>Entidades de datos</span>
+                <input id="entities-count" type="range" min="0" max="40" value="4" />
+                <output id="entities-count-output">4</output>
+              </label>
+
+              <label class="range-field">
+                <span>Roles / permisos</span>
+                <input id="roles-count" type="range" min="0" max="12" value="2" />
+                <output id="roles-count-output">2</output>
+              </label>
+
+              <label class="range-field">
+                <span>Integraciones externas</span>
+                <input id="integrations-count" type="range" min="0" max="15" value="1" />
+                <output id="integrations-count-output">1</output>
+              </label>
+
+              <label class="range-field">
+                <span>Automatizaciones / flujos</span>
+                <input id="automations-count" type="range" min="0" max="25" value="2" />
+                <output id="automations-count-output">2</output>
+              </label>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="factor-title">
+            <div class="panel-header">
+              <p class="eyebrow small">Paso 3</p>
+              <h2 id="factor-title">Factores de riesgo y criterio comercial</h2>
+              <p>Estos multiplicadores evitan cobrar igual un proyecto claro que uno incierto o urgente.</p>
+            </div>
+
+            <div class="form-grid three-columns">
+              <label>
+                Diseño visual
+                <select id="design-level"></select>
+              </label>
+
+              <label>
+                Calidad técnica esperada
+                <select id="quality-level"></select>
+              </label>
+
+              <label>
+                Urgencia
+                <select id="urgency-level"></select>
+              </label>
+
+              <label>
+                Claridad del alcance
+                <select id="ambiguity-level"></select>
+              </label>
+
+              <label>
+                Experiencia del equipo
+                <select id="novelty-level"></select>
+              </label>
+
+              <label>
+                Perfil del cliente
+                <select id="client-level"></select>
+              </label>
+
+              <label>
+                Entrega / licencia
+                <select id="rights-level"></select>
+              </label>
+
+              <label>
+                Soporte incluido
+                <select id="support-level"></select>
+              </label>
+
+              <label>
+                Rondas de cambios incluidas
+                <input id="revision-rounds" type="number" min="0" max="12" value="2" />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="module-title">
+            <div class="panel-header panel-header-row">
+              <div>
+                <p class="eyebrow small">Paso 4</p>
+                <h2 id="module-title">Módulos del proyecto</h2>
+                <p>Activá lo que entra. La complejidad por módulo pesa más que el tipo de proyecto.</p>
+              </div>
+              <button id="toggle-all-modules" class="secondary-button" type="button">Activar todo</button>
+            </div>
+
+            <div class="module-toolbar" aria-label="Filtros de módulos">
+              <button class="chip active" type="button" data-filter="all">Todos</button>
+              <button class="chip" type="button" data-filter="Estrategia">Estrategia</button>
+              <button class="chip" type="button" data-filter="Producto">Producto</button>
+              <button class="chip" type="button" data-filter="Frontend">Frontend</button>
+              <button class="chip" type="button" data-filter="Backend">Backend</button>
+              <button class="chip" type="button" data-filter="Integraciones">Integraciones</button>
+              <button class="chip" type="button" data-filter="Operación">Operación</button>
+            </div>
+
+            <div id="modules-list" class="modules-list"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="commercial-title">
+            <div class="panel-header">
+              <p class="eyebrow small">Paso 5</p>
+              <h2 id="commercial-title">Márgenes, buffer y costos externos</h2>
+              <p>Separá costo interno, margen comercial y gastos que debería pagar el cliente aparte.</p>
+            </div>
+
+            <div class="form-grid three-columns">
+              <label>
+                Gestión / coordinación (%)
+                <input id="pm-percent" type="number" min="0" max="80" value="10" />
+              </label>
+
+              <label>
+                QA / pruebas manuales (%)
+                <input id="qa-percent" type="number" min="0" max="80" value="12" />
+              </label>
+
+              <label>
+                Buffer técnico (%)
+                <input id="buffer-percent" type="number" min="0" max="120" value="15" />
+              </label>
+
+              <label>
+                Margen comercial (%)
+                <input id="margin-percent" type="number" min="0" max="200" value="35" />
+              </label>
+
+              <label>
+                Costos externos estimados
+                <input id="external-costs" type="number" min="0" step="1000" value="0" />
+              </label>
+
+              <label>
+                Redondeo comercial
+                <select id="rounding-step">
+                  <option value="1000">$1.000</option>
+                  <option value="5000" selected>$5.000</option>
+                  <option value="10000">$10.000</option>
+                  <option value="25000">$25.000</option>
+                  <option value="50000">$50.000</option>
+                </select>
+              </label>
+            </div>
+          </section>
+        </section>
+
+        <aside class="result-column" aria-label="Resultado estimado">
+          <section id="result" class="result-card" aria-live="polite"></section>
+
+          <section class="panel compact-panel">
+            <div class="button-row full-width">
+              <button id="copy-summary" class="primary-button" type="button">Copiar resumen</button>
+              <button id="download-json" class="secondary-button" type="button">Exportar JSON</button>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
